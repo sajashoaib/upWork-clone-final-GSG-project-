@@ -45,7 +45,7 @@ export const StyledP=styled('p')`
 color:${(props)=>props.theme.colors.darkgreen};
 font-family: ${(props)=>props.theme.typography.helvetica};
 font-size: ${(props)=>props.theme.fontsize.xs};
-line-height: 1.428px;
+/* line-height: 22px; */
 letter-spacing:0.6px;
 
 `
