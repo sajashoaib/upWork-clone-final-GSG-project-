@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledH1, StyledH5 ,StyledH2,StyledH4,StyledH3,StyledH6,StyledP} from './style';
 
-const Typography = ({ as="p", children , ...props }) => {
+const Typography = ({ as="p", children ,color, ...props }) => {
   
     switch (as.toLowerCase()) {
         case "h1":
@@ -48,7 +48,7 @@ const Typography = ({ as="p", children , ...props }) => {
         // // micro => 12 px 
         // // micro-muted => 12px color:muted
         case "p" :
-          return <StyledP {...props}>{children}</StyledP>
+          return <StyledP {...props} color={color}>{children}</StyledP>
           default : 
           return <StyledP  as={as} {...props}>{children}</StyledP>
         };
