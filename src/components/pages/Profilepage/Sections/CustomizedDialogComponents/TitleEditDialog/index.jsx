@@ -2,8 +2,8 @@ import Typography from '@/components/atoms/Typography'
 import { Button, TextField } from '@mui/material'
 import React,{useState} from 'react'
 
-const TitleEditDialog = ({ onSaveChanges }) => {
-    const [newTitle, setNewTitle] = useState('');
+const TitleEditDialog = ({ text, onSaveChanges }) => {
+    const [newTitle, setNewTitle] = useState(text);
 
     const handleSaveChangesClick = () => {
       onSaveChanges(newTitle);
