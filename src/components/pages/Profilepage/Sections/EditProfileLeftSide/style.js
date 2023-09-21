@@ -19,6 +19,8 @@ export const StyledDivviewprofiletitle = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "10px",
+  justifyContent:'space-between'
+ 
 }));
 
 export const StyledDivviewprofilebtn = styled(Button)(({ theme }) => ({
