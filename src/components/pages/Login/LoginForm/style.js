@@ -8,3 +8,7 @@ text-align: center;
 flex-direction: column;
 gap:10px;
 `
+export const StyledForm=styled.form`
+padding:20px;
+
+`
