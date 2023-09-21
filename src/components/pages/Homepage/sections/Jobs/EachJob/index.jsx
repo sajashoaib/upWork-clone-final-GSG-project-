@@ -104,10 +104,11 @@ const EachJob = ({
               }}
             > <GrPrevious/>
             </Button>
-            {/* <Button onClick={() => openInNewWindow(clickedComponentData)}>
+             {/* <Button onClick={() => openInNewWindow(clickedComponentData)}>
                 <IoMdOpen /> Open Job in a new window
-              </Button> */}
-            <StyledLinks href="/job" ><IoMdOpen/> Open Job in a new window</StyledLinks></StyledOpenWindow>
+              </Button>  */}
+            <StyledLinks href="/job" ><IoMdOpen/> Open Job in a new window</StyledLinks>
+            </StyledOpenWindow>
                <JobDetails   data={clickedComponentData} />
             
           </div>
