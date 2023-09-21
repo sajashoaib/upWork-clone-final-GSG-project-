@@ -8,12 +8,17 @@ import ProtofolioJobsProposalsSections from './ProtofolioJobsProposalsSections'
 import { StyledDivProtoJobPropslas } from './ProtofolioJobsProposalsSections/style'
 import SearchSection from './SearchSection'
 import JobsMayLikeIt from './JobsMayLikeIt'
+import { StyledDivContainer } from './style'
+import Protofolio from './Protofolio'
+import Footer from '@/components/molecules/Footer'
+import DropDownList from './DropDownList'
 
 const Sections = () => {
   return (
     <div>
         <NavBar/>
       <Container>
+        <StyledDivContainer>
         <div style={{ width:'70%'}}>
 <LearnMoreSection/>
 <StyledDivProtoJobPropslas>
@@ -28,7 +33,14 @@ const Sections = () => {
       <SearchSection/>
       <JobsMayLikeIt/>
       </div>
+      <div style={{ width:'30%'}}>
+<Protofolio/>
+<DropDownList/>
+      </div>
+      </StyledDivContainer>
       </Container>
+            <Footer/>
+
     </div>
   )
 }
