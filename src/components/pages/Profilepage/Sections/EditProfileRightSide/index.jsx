@@ -38,13 +38,30 @@ const EditProfileRightSide = () => {
   const [openDialog2, setOpenDialog2] = useState(false);
   const [openDialog3, setOpenDialog3] = useState(false);
   const [openDialog4, setOpenDialog4] = useState(false);
+  const [overviewText, setOverviewText] = useState(`
+  👋 Hi, I am [Saja Shoaib], a Front-End
+   developer with a passion for crafting engaging and user-friendly web applications using React.js || Next Js.
+  💼 My web development journey has given me a solid foundation in
+  building responsive
+  and intuitive user interfaces. I thrive on solving problems and
+  always look forward to taking
+  
+  on new challenges. Collaboration is key in my work, and I am always
+  keen to work with 
+  experienced colleagues and contribute my fresh perspective to the
+  team.
+`);
 
   const [title, setTitle] = useState(
     "Front-End Developer || React Js || Next Js"
   );
+  const [rate, setRate] = useState(
+    "20.00"
+  );
 
   const handleTitleChange = (newTitle) => {
     setTitle(newTitle);
+    handleCloseDialog1();
   };
   const handleOpenDialog1 = () => {
     setOpenDialog1(true);
@@ -86,21 +103,24 @@ const EditProfileRightSide = () => {
   const handleShowMoreClick = () => {
     setShowMore(!showMore);
   };
+  const handleOverviewChange = (newText) => {
+    setOverviewText(newText);
+    handleCloseDialog2();
+  };
+
   return (
     <div>
       <StyledDivprofilehowiam>
         <StyledDivprofilejobtitle>
           <StyledDivviewprofiletitle>
-            <Typography as="h1">
-              Front-End Developer || React Js || Next Js
-            </Typography>
+            <Typography as="h1">{title}</Typography>
             <StyledEditIcon onClick={handleOpenDialog1} />
             <CustomizedDialog
               open={openDialog1}
               onClose={handleCloseDialog1}
               title="Edit your title"
             >
-              <TitleEditDialog onSaveChanges={handleTitleChange} />
+              <TitleEditDialog text={title} onSaveChanges={handleTitleChange} />
             </CustomizedDialog>
           </StyledDivviewprofiletitle>
           <StyledDivviewprofiletitle>
@@ -118,33 +138,22 @@ const EditProfileRightSide = () => {
         </StyledDivprofilejobtitle>
 
         <StyledDivviewprofiletitle>
-          <Typography as="p">
-            👋 Hi, I am [Saja Shoaib], a Front-End developer with a passion for
-            crafting engaging and
-            <br /> user-friendly web applications using React.js ||Next Js.
-          </Typography>
-          <StyledEditIcon onClick={handleOpenDialog2} />{" "}
+          <div style={{ width: "90%" }}>
+            <Typography as="p">{overviewText}</Typography>
+          </div>
+          <StyledEditIcon onClick={handleOpenDialog2} className="edit" />{" "}
           <CustomizedDialog
             open={openDialog2}
             onClose={handleCloseDialog2}
             title="OverView"
           >
-            <OverViewDialog />
+            <OverViewDialog
+              text={overviewText}
+              onSaveChanges={handleOverviewChange}
+            />
           </CustomizedDialog>
         </StyledDivviewprofiletitle>
 
-        <Typography as="p">
-          {" "}
-          💼 My web development journey has given me a solid foundation in
-          building responsive
-          <br /> and intuitive user interfaces. I thrive on solving problems and
-          always look forward to taking
-          <br />
-          on new challenges. Collaboration is key in my work, and I am always
-          keen to work with <br />
-          experienced colleagues and contribute my fresh perspective to the
-          team.
-        </Typography>
         {showMore ? (
           <>
             <Typography as="p">
