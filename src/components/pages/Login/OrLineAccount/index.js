@@ -6,7 +6,7 @@ const OrLineAccount = styled("p")`
   color: ${(props) => props.theme.colors.smoke};
   position: relative;
   margin: 60px 0 0 0;
-  width: 60%;
+  width: 100%;
   text-align: center;
   &::before,
   &::after {
