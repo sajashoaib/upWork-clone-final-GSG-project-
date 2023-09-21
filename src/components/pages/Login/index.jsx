@@ -13,7 +13,7 @@ const Login = () => {
       <NavLoginSignUp isLoginPage={false}/>
       <React.Fragment>
     <CssBaseline />
-    <Container maxWidth="sm"  >
+    <Container maxWidth="sm" >
       <StyledBox >
      <LoginForm/>
       </StyledBox>     
