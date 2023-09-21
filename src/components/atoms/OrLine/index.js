@@ -7,7 +7,7 @@ const OrLine = styled('p')`
 
   position: relative;
   margin: 8px 0;
-  width:${(props)=>props.width || "70%"} ;
+  width:${(props)=>props.width || "100%"} ;
   text-align: center;
   &::before,
   &::after {
