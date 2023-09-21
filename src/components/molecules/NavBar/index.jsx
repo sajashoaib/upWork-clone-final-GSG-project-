@@ -30,6 +30,7 @@ import {
   MyJobsOptions,
   Reports,
 } from "@/mock/NavSelectOptions";
+import Link from "next/link";
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
@@ -64,11 +65,12 @@ const NavBar = () => {
     <AppBar position="static" sx={{ background: "white", boxShadow: "none" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <Link href='/main'>
           <img
             src="../../assets/images/Upwork-Logo-1-500x281.png"
             alt="error"
             width="100px"
-          />
+          /></Link>
           <StyledSelectDiv
                   >
             <Selects options={FindWorkOptions} />
