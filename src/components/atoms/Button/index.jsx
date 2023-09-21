@@ -9,6 +9,7 @@ const Buttons = ({label,width, backgroundColor, textColor, border}) => {
        backgroundColor={backgroundColor} 
        width={width}
        border={border}
+       type='submit'
        >
       {label}
     </StyledButton>

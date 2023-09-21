@@ -6,6 +6,7 @@ export const StyledButton=styled(Button)(({theme,width,backgroundColor,textColor
     color: textColor, 
     borderRadius:'30px',
     border:border,
+    // padding:'20px',
     '&:hover': {
       backgroundColor: '#03d01d', 
     },  
