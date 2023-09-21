@@ -5,7 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import {StyledInput,} from './style';
 import {BiSolidUser }from 'react-icons/bi'
 
-const Input = () => {
+const Input = ({type,placeholder,icon,onChange,name}) => {
   return (
     <div>
      
@@ -17,12 +17,14 @@ const Input = () => {
          <StyledInput
           fullWidth
           id="fullWidth"
-          type='email'
-          placeholder='UserName or Email'
+          type={type}
+          name={name}
+          onChange={onChange}
+          placeholder={placeholder}
             InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <BiSolidUser/>
+              {icon}  
               </InputAdornment>
             ),
           }}
