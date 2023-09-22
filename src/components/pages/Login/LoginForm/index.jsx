@@ -1,4 +1,4 @@
-
+'use client'
 import { ButtonWithIconMock } from "@/mock/ButtonWithIconMaock";
 import OrLine from "@/components/atoms/OrLine";
 import React, { useState, useEffect } from "react";
@@ -72,11 +72,18 @@ const LoginForm = () => {
       [e.target.name]: { value: e.target.value, error: "" },
     }));
   };
-
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('fulldata',JSON.stringify(data))
+    console.log('we are running on the client')
+} else {
+    console.log('we are running on the server');
+}
   return (
     <StyledDiv>
       <Typography as="h1"> Log in to Upwork</Typography>
-      <StyledForm onSubmit={handelSubmit}>
+      <StyledForm 
+      onSubmit={handelSubmit}
+      >
         <Input
           type="email"
           name="email" 
