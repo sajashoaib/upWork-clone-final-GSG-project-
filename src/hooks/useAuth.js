@@ -9,7 +9,7 @@ export const AUTH_ACTIONS = {
 };
 
 const initialState = {
-  token: localStorage.getItem("token") || null,
+  token: typeof window !== "undefined" ? localStorage.getItem('token') : null,
   error: null,
   isLoading: false,
   isAuth: localStorage.getItem("isAuth") || false,
@@ -67,6 +67,11 @@ const useAuth = () => {
       Authorization: `Bearer ${token}`,
     },
   };
+  if (typeof window !== 'undefined') {
+    console.log('we are running on the client')
+} else {
+    console.log('we are running on the server');
+}
 
   const login = async (body) => {
     dispatch({ type: AUTH_ACTIONS.SET_LOADING });
