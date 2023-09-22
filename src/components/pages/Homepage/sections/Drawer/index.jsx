@@ -3,7 +3,7 @@ import JobDetails from './JobDetails'
 
 const Drawer = ({data}) => {
     if (!data) {
-        return <p>No data available</p>; 
+        return <p></p>; 
       }
     
       return (
