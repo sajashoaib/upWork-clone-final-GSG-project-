@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyledDivviewprofiletitle } from "../EditProfileLeftSide/style";
 import Typography from "@/components/atoms/Typography";
 import {
@@ -55,9 +55,16 @@ const EditProfileRightSide = () => {
   const [title, setTitle] = useState(
     "Front-End Developer || React Js || Next Js"
   );
-  const [rate, setRate] = useState(
-    "20.00"
-  );
+  const [rate, setRate] = useState("20.00");
+  const [skillsText, setSkillsText] = useState("");
+  useEffect(() => {
+    const initialSkills = SkillsCiph.map((item) => item.skill).join(", ");
+    setSkillsText(initialSkills);
+  }, []);
+  const handleSaveSkills = (newSkillsText) => {
+    setSkillsText(newSkillsText);
+    handleCloseDialog3();
+  };
 
   const handleTitleChange = (newTitle) => {
     setTitle(newTitle);
@@ -234,12 +241,26 @@ const EditProfileRightSide = () => {
             onClose={handleCloseDialog3}
             title="Edit Skills"
           >
-            <SkillsDialog />
+            <SkillsDialog
+              initialSkills={skillsText}
+              onSave={handleSaveSkills}
+            />
           </CustomizedDialog>
         </StyledDivviewprofiletitle>
-        {SkillsCiph.map((item, index) => (
-          <Chip key={index} label={item.skill} sx={{ margin: "5px 10px" }} />
-        ))}
+        {skillsText && (
+          <div>
+            {typeof skillsText === "string" &&
+              skillsText
+                .split(",")
+                .map((skill, index) => (
+                  <Chip
+                    key={index}
+                    label={skill.trim()}
+                    style={{ margin: "5px" }}
+                  />
+                ))}
+          </div>
+        )}{" "}
       </StyledDivprofilehowiam>
       <StyledDivProjectCatalog>
         <div className="titlebtncatalog">
