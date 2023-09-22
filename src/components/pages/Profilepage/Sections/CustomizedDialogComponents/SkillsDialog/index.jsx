@@ -47,28 +47,34 @@ const SkillsDialog = ({ initialSkills, onSave }) => {
   return (
     <div>
       <Typography>Skills</Typography>
-      <div>
-        <input
-          type="text"
-          placeholder="Add Skill"
-          value={newSkill}
-          onChange={(e) => setNewSkill(e.target.value)}
-        />
-        <Button onClick={handleAddSkill}>Add</Button>
+      <div style={{ border: "1px solid green", borderRadius: "20px" }}>
+        <div>
+          {skills.split(",").map((skill, index) => (
+            <span key={index}>
+              <Chip
+                label={skill.trim()}
+                onDelete={() => handleRemoveSkill(index)}
+                color="primary"
+                style={{ margin: "5px" }}
+              />
+            </span>
+          ))}
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Add "
+            value={newSkill}
+            onChange={(e) => setNewSkill(e.target.value)}
+            style={{
+              borderRadius: "20px",
+              padding: " 10px 20px ",
+            }}
+          />
+          <Button onClick={handleAddSkill}>Add</Button>
+        </div>
+        <Button onClick={handleSaveSkills}>Save</Button>
       </div>
-      <div>
-        {skills.split(",").map((skill, index) => (
-          <span key={index}>
-            <Chip
-              label={skill.trim()}
-              onDelete={() => handleRemoveSkill(index)}
-              color="primary"
-              style={{ margin: "5px" }}
-            />
-          </span>
-        ))}
-      </div>
-      <Button onClick={handleSaveSkills}>Save</Button>
     </div>
   );
 };
