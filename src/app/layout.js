@@ -5,6 +5,7 @@ import { theme } from "@/constant/theme";
 import StyledComponentsRegistry from "./lib/registry";
 import { Provider} from "react-redux";
 import { store } from "@/redux/store";
+import { JobDataProvider } from "@/context/JobDataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +19,14 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
       {/* <Provider store={store}> */}
+      <JobDataProvider>
         <StyledComponentsRegistry>
           <ThemeProvider theme={theme}>
             {children}
             </ThemeProvider>
         </StyledComponentsRegistry>
                     {/* </Provider> */}
-
+</JobDataProvider>
       </body>
     </html>
   )}
