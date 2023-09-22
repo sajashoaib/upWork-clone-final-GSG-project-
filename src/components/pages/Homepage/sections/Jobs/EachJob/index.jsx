@@ -1,28 +1,35 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import Typography from "@/components/atoms/Typography";
 import { BiDislike } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { StyledEachJob, StyledDivlittleDetailJob, StyledRating, StyledOpenWindow } from "./style";
+import {
+  StyledEachJob,
+  StyledDivlittleDetailJob,
+  StyledRating,
+  StyledOpenWindow,
+} from "./style";
 import { FaLocationDot } from "react-icons/fa6";
 import { StyledTitleJob } from "../style";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import Drawer from "../../Drawer";
-import {GrPrevious} from 'react-icons/gr'
+import { GrPrevious } from "react-icons/gr";
 import JobDetails from "../../Drawer/JobDetails";
 import { StyledLinks } from "../../DropDownList/style";
-import {IoMdOpen} from 'react-icons/io'
-import { MdVerified } from 'react-icons/md';
-import { VscUnverified } from 'react-icons/vsc';
+import { IoMdOpen } from "react-icons/io";
+import { MdVerified } from "react-icons/md";
+import { VscUnverified } from "react-icons/vsc";
 import { useRouter } from "next/navigation";
+import { useJobData } from "@/context/JobDataContext";
 
 // Create an object to map icon strings to components
 const iconComponents = {
   MdVerified: <MdVerified />,
-  VscUnverified: <VscUnverified />}
+  VscUnverified: <VscUnverified />,
+};
 const EachJob = ({
   title,
   description,
@@ -51,19 +58,27 @@ const EachJob = ({
   membership,
   clientcity,
   publishtime,
-   data
+  data,
 }) => {
-    const handleClick = () => {
-      console.info("You clicked the Chip.");
-    };
-  
+  const handleClick = () => {
+    console.info("You clicked the Chip.");
+  };
+
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [clickedComponentData, setClickedComponentData] = useState(null); 
+  const [clickedComponentData, setClickedComponentData] = useState(null);
   const selectedIcon = iconComponents[icon] || null;
+  const { setJob } = useJobData();
+  const openInNewWindow = () => {
+    if (data) {
+      setJob(data);
+      router.push("/job");
+    }
+  };
+
   const router = useRouter();
 
   const openDrawer = (data) => {
-    setClickedComponentData(data); 
+    setClickedComponentData(data);
 
     setDrawerOpen(true);
   };
@@ -71,55 +86,50 @@ const EachJob = ({
   const closeDrawer = () => {
     setDrawerOpen(false);
   };
-  const openInNewWindow = (data) => {
-    if (data) {
-      const queryParams = new URLSearchParams({ data: JSON.stringify(data) });
-      const newWindowUrl = `/jobInNewWindow?${queryParams.toString()}`;
-      window.open(newWindowUrl, '_blank');
-    }
-  };
+
   return (
     <div>
-      <StyledEachJob
-       onClick={()=>data && openDrawer(data)}
-       >
+      <StyledEachJob onClick={() => data && openDrawer(data)}>
         <SwipeableDrawer
           anchor="right"
           open={drawerOpen}
           onClose={closeDrawer}
-        onOpen={() => {}} 
-
+          onOpen={() => {}}
         >
           <div
             style={{
               width: "1000px",
               padding: "25px",
             }}
-          > 
-          <StyledOpenWindow>
-          <Button
-              onClick={(e) => {
-                e.stopPropagation();
-                closeDrawer();
-              }}
-            > <GrPrevious/>
-            </Button>
-             {/* <Button onClick={() => openInNewWindow(clickedComponentData)}>
-                <IoMdOpen /> Open Job in a new window
-              </Button>  */}
-            <StyledLinks href="/job" ><IoMdOpen/> Open Job in a new window</StyledLinks>
+          >
+            <StyledOpenWindow>
+              <Button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeDrawer();
+                }}
+              >
+                {" "}
+                <GrPrevious />
+              </Button>
+              <Button
+                onClick={openInNewWindow}
+                sx={{
+                  color: "green",
+                  textTransform: "none",
+                }}
+              >
+                <IoMdOpen /> Open Job in New Window
+              </Button>
             </StyledOpenWindow>
-               <JobDetails   data={clickedComponentData} />
-            
+            <JobDetails data={clickedComponentData} />
           </div>
         </SwipeableDrawer>
         <div className="titlesWithicon">
           <StyledTitleJob as="h3">{title}</StyledTitleJob>
           <div>
             <BiDislike className="icons" />
-            <AiOutlineHeart
-              className="icons "
-            />
+            <AiOutlineHeart className="icons " />
           </div>
         </div>
         <StyledDivlittleDetailJob>

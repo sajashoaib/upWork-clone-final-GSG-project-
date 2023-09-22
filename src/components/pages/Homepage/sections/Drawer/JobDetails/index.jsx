@@ -22,12 +22,12 @@ import { BsFlagFill } from "react-icons/bs";
 import { BsHeart } from "react-icons/bs";
 import Link from "next/link";
 
-const JobDetails = ({ data }) => {
+const JobDetails = ({ data, width, margin }) => {
   if (!data) {
-    return <p>No data available</p>;
+    return <p></p>;
   }
   return (
-    <StyledJobDivDetail>
+    <StyledJobDivDetail style={{ width, margin }}>
       <StyledJobDivDetail1>
         <div style={{ borderBottom: "1px solid #beccbe" }}>
           <StyledJobDivDetail2TitlepostedTime>
