@@ -24,6 +24,7 @@ import { MdVerified } from "react-icons/md";
 import { VscUnverified } from "react-icons/vsc";
 import { useRouter } from "next/navigation";
 import { useJobData } from "@/context/JobDataContext";
+import { useSavedJobData } from "@/context/SavedJobContext";
 
 // Create an object to map icon strings to components
 const iconComponents = {
@@ -58,6 +59,9 @@ const EachJob = ({
   membership,
   clientcity,
   publishtime,
+  isSelected,
+  toggleSelection,
+  id,
   data,
 }) => {
   const handleClick = () => {
@@ -67,6 +71,13 @@ const EachJob = ({
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [clickedComponentData, setClickedComponentData] = useState(null);
   const selectedIcon = iconComponents[icon] || null;
+  const { addSavedJob } = useSavedJobData();
+
+  const handleSaveJob = () => {
+    if (data) {
+      addSavedJob({ id, ...data });
+    }
+  };
   const { setJob } = useJobData();
   const openInNewWindow = () => {
     if (data) {
@@ -129,7 +140,7 @@ const EachJob = ({
           <StyledTitleJob as="h3">{title}</StyledTitleJob>
           <div>
             <BiDislike className="icons" />
-            <AiOutlineHeart className="icons " />
+            <AiOutlineHeart className="icons " onClick={handleSaveJob} />
           </div>
         </div>
         <StyledDivlittleDetailJob>

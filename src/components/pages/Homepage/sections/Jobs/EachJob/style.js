@@ -25,6 +25,9 @@ export const StyledEachJob = styled("div")(({ theme }) => ({
       color: `${theme.colors.baseColorGreen}`,
       background: "white",
       cursor: "pointer",
+      "&:hover": {
+        background: theme.colors.gray05,
+      },
     },
   }));
   
