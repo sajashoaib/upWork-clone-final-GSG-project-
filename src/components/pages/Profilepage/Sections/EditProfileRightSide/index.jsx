@@ -28,7 +28,6 @@ import TitleEditDialog from "../CustomizedDialogComponents/TitleEditDialog";
 import OverViewDialog from "../CustomizedDialogComponents/OverViewDialog";
 import SkillsDialog from "../CustomizedDialogComponents/SkillsDialog";
 import HourlyRate from "../CustomizedDialogComponents/HourlyRate";
-
 const itemsPerPage = 3;
 
 const EditProfileRightSide = () => {
@@ -38,6 +37,11 @@ const EditProfileRightSide = () => {
   const [openDialog2, setOpenDialog2] = useState(false);
   const [openDialog3, setOpenDialog3] = useState(false);
   const [openDialog4, setOpenDialog4] = useState(false);
+  const [updatedRate, setUpdatedRate] = useState("20.00");
+  const [skillsText, setSkillsText] = useState("");
+  const [title, setTitle] = useState(
+    "Front-End Developer || React Js || Next Js"
+  );
   const [overviewText, setOverviewText] = useState(`
   👋 Hi, I am [Saja Shoaib], a Front-End
    developer with a passion for crafting engaging and user-friendly web applications using React.js || Next Js.
@@ -52,18 +56,18 @@ const EditProfileRightSide = () => {
   team.
 `);
 
-  const [title, setTitle] = useState(
-    "Front-End Developer || React Js || Next Js"
-  );
-  const [rate, setRate] = useState("20.00");
-  const [skillsText, setSkillsText] = useState("");
   useEffect(() => {
     const initialSkills = SkillsCiph.map((item) => item.skill).join(", ");
     setSkillsText(initialSkills);
   }, []);
+
   const handleSaveSkills = (newSkillsText) => {
     setSkillsText(newSkillsText);
     handleCloseDialog3();
+  };
+  const handleSaveRate = (newRate) => {
+    setUpdatedRate(newRate);
+    handleCloseDialog4();
   };
 
   const handleTitleChange = (newTitle) => {
@@ -103,10 +107,6 @@ const EditProfileRightSide = () => {
     setPage(value);
   };
 
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedPhotos = ProtofolioMyJobs.slice(startIndex, endIndex);
-
   const handleShowMoreClick = () => {
     setShowMore(!showMore);
   };
@@ -114,6 +114,9 @@ const EditProfileRightSide = () => {
     setOverviewText(newText);
     handleCloseDialog2();
   };
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedPhotos = ProtofolioMyJobs.slice(startIndex, endIndex);
 
   return (
     <div>
@@ -131,14 +134,14 @@ const EditProfileRightSide = () => {
             </CustomizedDialog>
           </StyledDivviewprofiletitle>
           <StyledDivviewprofiletitle>
-            <Typography as="h2">$20.00/hr </Typography>
+            <Typography as="h2">{updatedRate}$</Typography>
             <StyledEditIcon onClick={handleOpenDialog4} />
             <CustomizedDialog
               open={openDialog4}
               onClose={handleCloseDialog4}
               title="Change hourly rate"
             >
-              <HourlyRate />
+              <HourlyRate onSave={handleSaveRate} />
             </CustomizedDialog>
             <StyledBsLink />
           </StyledDivviewprofiletitle>
