@@ -3,14 +3,25 @@ import Typography from "@/components/atoms/Typography";
 import React from "react";
 import { useRouter } from "next/router";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { StyledDivProposalSettings ,StyledDivjobdetails, StyledDivjobdetailsA, StyledDivjobdetailsB} from "./style";
+import {
+  StyledDivProposalSettings,
+  StyledDivjobdetails,
+  StyledDivjobdetailsA,
+  StyledDivjobdetailsB,
+} from "./style";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import {BsFillCalendarMonthFill} from 'react-icons/bs'
-import {AiOutlineDollarCircle} from 'react-icons/ai'
-import {IoIosPerson} from 'react-icons/io'
+import { BsFillCalendarMonthFill } from "react-icons/bs";
+import { AiOutlineDollarCircle } from "react-icons/ai";
+import { IoIosPerson } from "react-icons/io";
+import { useJobData } from "@/context/JobDataContext";
 
-const ProposalSettings = ({ jobData }) => {
+const ProposalSettings = () => {
+  const { jobData } = useJobData();
+
+  if (!jobData) {
+    return <p>No job data available.</p>;
+  }
   return (
     <div>
       <StyledDivProposalSettings>
@@ -27,34 +38,37 @@ const ProposalSettings = ({ jobData }) => {
       <StyledDivProposalSettings>
         <Typography as="h2">Job details</Typography>
         <StyledDivjobdetails>
-        <StyledDivjobdetailsA> 
-                   <Typography as="h4">{jobData.title}</Typography>
+          <StyledDivjobdetailsA>
+            <Typography as="h4">{jobData.title}</Typography>
 
-                 <div className="TypoChip">
-                 <Chip label={jobData.jobname} /> 
-                <Typography as="p">Posted: {jobData.postedtime}</Typography>
-               </div>
+            <div className="TypoChip">
+              <Chip label={jobData.jobname} />
+              <Typography as="p">Posted: {jobData.postedtime}</Typography>
+            </div>
 
-        <Typography as="p">{jobData.description}</Typography></StyledDivjobdetailsA>
-           
-           <StyledDivjobdetailsB>
-        <Typography as="p">
-            <IoIosPerson className="iconjobdetail"/> 
-            {jobData.experiencerate}</Typography>
-        <span>Experience Level</span>
+            <Typography as="p">{jobData.description}</Typography>
+          </StyledDivjobdetailsA>
 
-      <Typography  as="p">
-        <AiOutlineDollarCircle className="iconjobdetail"/> 
-        Propose your terms</Typography>
-      <span>{jobData.priceway}</span>
+          <StyledDivjobdetailsB>
+            <Typography as="p">
+              <IoIosPerson className="iconjobdetail" />
+              {jobData.experiencerate}
+            </Typography>
+            <span>Experience Level</span>
 
-        <Typography as="p">
-            <BsFillCalendarMonthFill className="iconjobdetail"/> 
-            {jobData.delievredtime}</Typography>
-        <span>Project Length</span>
+            <Typography as="p">
+              <AiOutlineDollarCircle className="iconjobdetail" />
+              Propose your terms
+            </Typography>
+            <span>{jobData.priceway}</span>
 
-        </StyledDivjobdetailsB>
-</StyledDivjobdetails>
+            <Typography as="p">
+              <BsFillCalendarMonthFill className="iconjobdetail" />
+              {jobData.delievredtime}
+            </Typography>
+            <span>Project Length</span>
+          </StyledDivjobdetailsB>
+        </StyledDivjobdetails>
 
         <Typography as="h4">Skills and expertise</Typography>
         <Stack direction="row" spacing={1}>
@@ -66,7 +80,6 @@ const ProposalSettings = ({ jobData }) => {
             <Chip label={data.chips} variant="outlined" onClick={handleClick} />
           )}
         </Stack>
-         
       </StyledDivProposalSettings>
     </div>
   );

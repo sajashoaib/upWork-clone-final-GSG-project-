@@ -21,11 +21,17 @@ import Button from "@mui/material/Button";
 import { BsFlagFill } from "react-icons/bs";
 import { BsHeart } from "react-icons/bs";
 import Link from "next/link";
+import { useJobData } from "@/context/JobDataContext";
 
 const JobDetails = ({ data, width, margin }) => {
   if (!data) {
     return <p></p>;
   }
+  const { setJob } = useJobData();
+
+  const handleApplyNowClick = () => {
+    setJob(data);
+  };
   return (
     <StyledJobDivDetail style={{ width, margin }}>
       <StyledJobDivDetail1>
@@ -130,7 +136,11 @@ const JobDetails = ({ data, width, margin }) => {
         <StyledJobDivDetail1Apply>
           <Link href="/apply">
             {" "}
-            <Button variant="contained" className="btnapply a">
+            <Button
+              variant="contained"
+              className="btnapply a"
+              onClick={handleApplyNowClick}
+            >
               Apply Now
             </Button>
           </Link>
