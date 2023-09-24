@@ -131,7 +131,6 @@ const SignupFormInputs = () => {
                 sx: { height: "10px" },
               }}
               error={!!errors.email}
-              helperText={errors.email}
             />
           </FormControl>
 

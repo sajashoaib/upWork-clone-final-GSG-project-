@@ -135,14 +135,11 @@ const LoginForm = () => {
         ))}
         <OrLineAccount> Dont have an Upwork account? </OrLineAccount>
         <Link href="/signup">
-           <Buttons
+           <Buttons 
             variant="outlined"
             label="Sign Up"
             width="250px"
-            backgroundColor="transparent"
-            textColor="#108a00"
-            border="2px solid #108a00"
-          ></Buttons>
+            ></Buttons>
         </Link>
       </StyledForm>
     </StyledDiv>

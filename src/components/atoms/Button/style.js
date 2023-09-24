@@ -1,11 +1,11 @@
 'use client'
 import { Button,  styled } from "@mui/material";
-export const StyledButton=styled(Button)(({theme,width,backgroundcolor,textcolor,border})=>({
+export const StyledButton=styled(Button)(({theme,width})=>({
     width: width, 
-    backgroundColor: backgroundcolor, 
-    color: textcolor, 
+    color:theme.colors.baseColorGreen, 
     borderRadius:'30px',
-    border:border,
+    backgroundColor:"transparent",
+    border:"2px solid #108a00",
     '&:hover': {
       backgroundColor: '#03d01d', 
     },  

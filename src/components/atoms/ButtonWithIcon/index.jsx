@@ -13,10 +13,7 @@ const ButtonWithIcon = ({ label, icon, backgroundColor, textColor, onClick ,widt
       backgroundColor={backgroundColor}
       textColor={textColor}
     > 
-    {/* <div style={{ backgroundColor: 'white', borderRadius:'50px',padding:'15px 20px'}}>
-        {icon}
-    </div> */}
-      {label}
+          {label}
     </StyledButtonWithIcon>
     </div>
   )
