@@ -109,6 +109,8 @@ const useAuth = () => {
   };
 
   const logout = () => {
+    localStorage.removeItem("upwork-token"); 
+
     dispatch({ type: AUTH_ACTIONS.LOGOUT });
   };
 

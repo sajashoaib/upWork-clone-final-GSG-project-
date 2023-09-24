@@ -26,7 +26,6 @@ import { useRouter } from "next/navigation";
 import { useJobData } from "@/context/JobDataContext";
 import { useSavedJobData } from "@/context/SavedJobContext";
 
-// Create an object to map icon strings to components
 const iconComponents = {
   MdVerified: <MdVerified />,
   VscUnverified: <VscUnverified />,
@@ -79,6 +78,8 @@ const EachJob = ({
     }
   };
   const { setJob } = useJobData();
+    const router = useRouter();
+
   const openInNewWindow = () => {
     if (data) {
       setJob(data);
@@ -86,7 +87,6 @@ const EachJob = ({
     }
   };
 
-  const router = useRouter();
 
   const openDrawer = (data) => {
     setClickedComponentData(data);

@@ -31,12 +31,20 @@ import {
   Reports,
 } from "@/mock/NavSelectOptions";
 import Link from "next/link";
+import useAuth from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const [anchorElUser, setAnchorElUser] = React.useState(null); 
+   const router = useRouter();
+const {logout}=useAuth();
+ const handleLogout = () => {
+  console.log("Logout clicked");
+  logout();
+router.push('/login')
+};
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -164,11 +172,17 @@ const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {/* {settings.map((setting) => (
+                <MenuItem key={setting} onClick={setting === "Logout" ? handleLogout : handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              {settings.map((setting) => (
+  <MenuItem key={setting} onClick={setting === "Logout" ? handleLogout : handleCloseUserMenu}>
+    <Typography textAlign="center">{setting}</Typography>
+  </MenuItem>
+))}
+
             </Menu>
           </Box>
         </Toolbar>
