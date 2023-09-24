@@ -20,16 +20,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
       {/* <Provider store={store}> */}
+              <SavedJobProvider>
+
       <JobDataProvider>
-        <SavedJobProvider>
         <StyledComponentsRegistry>
           <ThemeProvider theme={theme}>
             {children}
             </ThemeProvider>
         </StyledComponentsRegistry>
                     {/* </Provider> */}
-</SavedJobProvider>
-</JobDataProvider>
+
+</JobDataProvider></SavedJobProvider>
       </body>
     </html>
   )}
