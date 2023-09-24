@@ -30,15 +30,15 @@ export default function TabsJob() {
         </TabPanel>
         <TabPanel value="2">Item Two</TabPanel>
         <TabPanel value="3">
-          {savedJobs.map((savedJob, index) => (
-            <EachJob
-              key={index}
-              id={savedJob.id}
-              isSelected={true}
-              toggleSelection={() => toggleSelection(savedJob)}
-              {...savedJob}
-            />
-          ))}
+        {savedJobs !== null && savedJobs.map((savedJob, index) => (
+    <EachJob
+      key={index}
+      id={savedJob.id}
+      isSelected={true}
+      toggleSelection={() => toggleSelection(savedJob)}
+      {...savedJob}
+    />
+  ))}
         </TabPanel>
       </TabContext>
     </Box>

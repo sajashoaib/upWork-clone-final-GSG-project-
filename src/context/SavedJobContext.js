@@ -7,8 +7,8 @@ const SavedJobContext = createContext();
 export const SavedJobProvider = ({ children }) => {
   const [savedJobs, setSavedJobs] = useState(()=>{
   const savedJobData = localStorage.getItem(LOCAL_STORAGE_KEY);
-  return savedJobData ? JSON.parse(savedJobData) : null;
-  });
+  return savedJobData ? JSON.parse(savedJobData) : [];
+});
   useEffect(() => {
     if (savedJobs) {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedJobs));
