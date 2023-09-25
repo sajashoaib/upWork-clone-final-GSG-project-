@@ -14,6 +14,9 @@ const initialState = {
   isLoading: false,
   isAuth: localStorage.getItem("isAuth") || false,
   user: JSON.parse(localStorage.getItem("user")) || null,
+  data: [],
+
+
 };
 
 const reduce = (state, action) => {
@@ -39,6 +42,7 @@ const reduce = (state, action) => {
         token: token,
         error: null,
         isLoading: false,
+
       };
 
     case AUTH_ACTIONS.LOGOUT:
@@ -47,6 +51,7 @@ const reduce = (state, action) => {
         token: null,
         error: null,
         isLoading: false,
+
       };
     case AUTH_ACTIONS.SET_ERROR:
       return {

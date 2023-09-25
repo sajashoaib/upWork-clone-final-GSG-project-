@@ -7,6 +7,7 @@ import Typography from '@/components/atoms/Typography';
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import Link from 'next/link';
+import useAuth from '@/hooks/useAuth';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 8,
@@ -21,6 +22,8 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const Protofolio = () => {
+  const {data}=useAuth();
+
   return (
     <StyledDivProtofolio>
       <Stack direction="row" spacing={2}>
@@ -30,7 +33,7 @@ const Protofolio = () => {
           sx={{ width: 60, height: 60}}
         />
       </Stack>
-  <Link href='/profile'>    <Typography as='h3'>Saja S.</Typography></Link>
+  <Link href='/profile'>    <Typography as='h3'>Saja S. </Typography></Link>
       <Typography as='p'>Front-End Developer || React Js</Typography>
     
       <Typography as='h5'>Complete your profile</Typography>

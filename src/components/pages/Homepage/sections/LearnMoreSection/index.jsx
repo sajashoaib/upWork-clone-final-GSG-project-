@@ -15,13 +15,17 @@ const LearnMoreSection = () => {
       label="learn more"
       style={{
         backgroundColor: '#ffffff',
-        color:'green',
-        border:'green'
+        color:'#03842e',
+        border:'1px solid green',
+        padding:" 5 20px",
+        borderRadius:'30px',
+        textTransform:'none',
+        width:"150px"
+
       }}
      
-      width="150px"
       
-    />
+    >Learn More</Button>
     </StyledDivLearnmore>
       
   )
