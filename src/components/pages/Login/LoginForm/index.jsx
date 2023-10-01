@@ -2,7 +2,7 @@
 import { ButtonWithIconMock } from "@/mock/ButtonWithIconMaock";
 import OrLine from "@/components/atoms/OrLine";
 import React, { useState, useEffect } from "react";
-import { StyledDiv, StyledForm } from "./style";
+import { StyledDiv, StyledForm} from "./style";
 import Typography from "@/components/atoms/Typography";
 import Input from "@/components/atoms/Input";
 import ButtonWithIcon from "@/components/atoms/ButtonWithIcon";
@@ -135,11 +135,17 @@ const LoginForm = () => {
         ))}
         <OrLineAccount> Dont have an Upwork account? </OrLineAccount>
         <Link href="/signup">
-           <Buttons 
+           <Button
             variant="outlined"
             label="Sign Up"
-            width="250px"
-            ></Buttons>
+            style={{
+              border:"1px solid #108a00",
+              borderRadius:'30px',
+              color:'#108a00',
+              width:" 250px",
+              margin:'10px 0',
+                    }}
+            >Sign Up </Button>
         </Link>
       </StyledForm>
     </StyledDiv>

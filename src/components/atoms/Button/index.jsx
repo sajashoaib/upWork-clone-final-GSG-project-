@@ -7,6 +7,7 @@ const Buttons = ({label,width}) => {
       <StyledButton variant="contained"  
        width={width}
        type='submit'
+    
        >
       {label}
     </StyledButton>

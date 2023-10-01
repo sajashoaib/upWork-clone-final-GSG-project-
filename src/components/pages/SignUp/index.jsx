@@ -13,7 +13,9 @@ const SignUp = () => {
       <NavLoginSignUp isLoginPage={true} />
       <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="sm">
+        <Container
+         maxWidth="sm"
+         >
           <StyledBox>
             <SignUpForm />
           </StyledBox>
