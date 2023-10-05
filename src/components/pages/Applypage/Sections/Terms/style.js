@@ -7,13 +7,11 @@ export const StyledDivmilestones = styled("div")(({ theme }) => ({
     justifyContent:'space-between',
     padding:'10px 0',
     '.fieldinput':{
-        // border:'1px solid red',
         borderRadius:'15px'
     }
     
   }));
   export const StyledDivPriceDetail = styled("div")(({ theme }) => ({
-    // borderBottom: `1px solid ${theme.colors.gray03}`,
     display: "flex",
     justifyContent:'center',
     padding:'10px 0',

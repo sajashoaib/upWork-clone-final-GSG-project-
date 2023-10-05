@@ -1,4 +1,3 @@
-import Typography from '@/components/atoms/Typography'
 import React from 'react'
 import { StyledFooterDiv, StyledFooterTypo } from './style'
 

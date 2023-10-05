@@ -24,10 +24,11 @@ import Link from "next/link";
 import { useJobData } from "@/context/JobDataContext";
 
 const JobDetails = ({ data, width, margin }) => {
+    const { setJob } = useJobData();
+
   if (!data) {
     return <p></p>;
   }
-  const { setJob } = useJobData();
 
   const handleApplyNowClick = () => {
     setJob(data);
